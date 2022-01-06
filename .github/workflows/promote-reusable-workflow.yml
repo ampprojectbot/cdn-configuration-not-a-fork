@@ -16,10 +16,6 @@ on:
         required: false
         default: ''
         type: string
-      access-token:
-        description: 'Personal access token with repo write access for the bot that should create the PR'
-        required: true
-        type: string
 
 jobs:
   promote:
@@ -43,4 +39,4 @@ jobs:
       - name: ⭐ Promote ${{ inputs.channel-name }} Channel ⭐
         run: npx ts-node scripts/${{ inputs.ts-file }} --amp_version=${{ inputs.amp-version }}
         env:
-          ACCESS_TOKEN: ${{ inputs.access-token }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}

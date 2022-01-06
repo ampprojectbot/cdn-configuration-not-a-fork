@@ -11,4 +11,5 @@ jobs:
       channel-name: 'Nightly'
       ts-file: 'promote-nightly.ts'
       amp-version: 2112231523000
-      access-token: ${{ secrets.ACCESS_TOKEN }}
+    secrets:
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
