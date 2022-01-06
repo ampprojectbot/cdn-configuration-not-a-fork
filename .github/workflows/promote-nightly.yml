@@ -5,9 +5,25 @@ name: Promote Nightly Channel
 on: push
 
 jobs:
-  promote-nightly:
-    uses: danielrozenberg/cdn-configuration-not-a-fork/.github/workflows/promote-reusable-workflow.yml@main
-    with:
-      channel-name: 'Nightly'
-      ts-file: 'promote-nightly.ts'
-      amp-version: 2112231523000
+  promote:
+    if: github.repository == 'danielrozenberg/cdn-configuration-not-a-fork'
+    name: Promote Nightly Channel
+    runs-on: ubuntu-latest
+    environment: ampprojectbot
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      - name: Set Up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: ⭐ Promote Nightly Channel ⭐
+        run: npx ts-node scripts/promote-nightly.ts --amp_version=2112231523000
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
