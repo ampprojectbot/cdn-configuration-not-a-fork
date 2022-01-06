@@ -47,8 +47,8 @@ export async function runPromoteJob(
 export async function createVersionsUpdatePullRequest(
   versionsMutator: (currentVersions: Versions) => VersionMutatorDef
 ): CreatePullRequestResponsePromise {
-  if (!process.env.GITHUB_RUN_ID) {
-    throw new Error('Environment variable GITHUB_RUN_ID is missing');
+  if (!process.env.GITHUB_TOKEN) {
+    throw new Error('Environment variable GITHUB_TOKEN is missing');
   }
 
   const currentVersions = (await fs.readJson(
