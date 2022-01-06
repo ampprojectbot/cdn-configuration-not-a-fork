@@ -2,19 +2,7 @@
 
 name: Promote Nightly Channel
 
-on:
-  repository_dispatch:
-    types: 'promote-nightly'
-    inputs:
-      amp-version:
-        description: 'AMP version number (13 digits)'
-        required: true
-
-  workflow_dispatch:
-    inputs:
-      amp-version:
-        description: 'AMP version number (13 digits)'
-        required: true
+on: push
 
 jobs:
   promote-nightly:
@@ -22,4 +10,4 @@ jobs:
     with:
       channel-name: 'Nightly'
       ts-file: 'promote-nightly.ts'
-      amp-version: ${{ github.event.inputs.amp-version }}
+      amp-version: 2112231523000
