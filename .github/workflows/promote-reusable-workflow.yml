@@ -36,7 +36,7 @@ jobs:
         run: npm ci
 
       - name: ⭐ Promote ${{ github.event.inputs.channel-name }} Channel ⭐
-        run: ts-node scripts/${{ github.event.inputs.ts-file }}
+        run: npx ts-node scripts/${{ github.event.inputs.ts-file }}
         env:
           AMP_VERSION: ${{ github.event.inputs.amp-version }} --amp_version=${{ github.event.inputs.amp-version }}
           GITHUB_TOKEN: ${{ secrets.AMPPROJECTBOT }}
