@@ -16,6 +16,9 @@ on:
         required: false
         default: ''
         type: string
+    secrets:
+      access-token:
+        required: true
 
 jobs:
   promote:
@@ -39,4 +42,4 @@ jobs:
       - name: ⭐ Promote ${{ inputs.channel-name }} Channel ⭐
         run: npx ts-node scripts/${{ inputs.ts-file }} --amp_version=${{ inputs.amp-version }}
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.access-token }}
