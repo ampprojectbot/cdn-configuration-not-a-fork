@@ -19,7 +19,7 @@ on:
 
 jobs:
   promote:
-    if: github.repository == 'danielrozenberg/cdn-configuration'
+    if: github.repository == 'danielrozenberg/cdn-configuration-not-a-fork'
     name: Promote ${{ inputs.channel-name }} Channel
     runs-on: ubuntu-latest
     environment: ampprojectbot
