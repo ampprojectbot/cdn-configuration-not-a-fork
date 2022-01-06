@@ -38,6 +38,7 @@ export async function runPromoteJob(
   } catch (err) {
     console.error('Job', jobName, 'failed.');
     console.error('ERROR:', err);
+    process.exitCode = 1;
   }
 }
 
