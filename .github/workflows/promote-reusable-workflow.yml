@@ -39,4 +39,4 @@ jobs:
       - name: ⭐ Promote ${{ inputs.channel-name }} Channel ⭐
         run: npx ts-node scripts/${{ inputs.ts-file }} --amp_version=${{ inputs.amp-version }}
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
