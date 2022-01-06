@@ -20,7 +20,7 @@ on:
 jobs:
   promote:
     if: github.repository == 'danielrozenberg/cdn-configuration'
-    name: Promote ${{ github.event.inputs.channel-name }} Channel
+    name: Promote ${{ inputs.channel-name }} Channel
     runs-on: ubuntu-latest
 
     steps:
@@ -35,7 +35,7 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: ⭐ Promote ${{ github.event.inputs.channel-name }} Channel ⭐
-        run: npx ts-node scripts/${{ github.event.inputs.ts-file }} --amp_version=${{ github.event.inputs.amp-version }}
+      - name: ⭐ Promote ${{ inputs.channel-name }} Channel ⭐
+        run: npx ts-node scripts/${{ inputs.ts-file }} --amp_version=${{ inputs.amp-version }}
         env:
           GITHUB_TOKEN: ${{ secrets.AMPPROJECTBOT }}
